@@ -1062,7 +1062,7 @@ async function handleImportFile(input) {
   statusEl.textContent = '✦ Reading your file...';
   previewEl.style.display = 'none';
 
-  const GEMINI_KEY = 'AIzaSyA-sWfwZjTb6F1iihJuXW0wPpoKiueQ9W8';
+  const GEMINI_KEY = 'AIzaSyCfHR-86eo6fdi3-jBjwxPyO_Xsc1VZQ7A';
   try {
     let prompt, requestBody;
     if (file.type.startsWith('image/')) {
@@ -1681,7 +1681,7 @@ async function runGlobalSearch() {
     <div style="font-size:24px;margin-bottom:12px;opacity:0.5">✦</div>
     Looking up "${raw}"...
   </div>`;
-  const GEMINI_KEY = 'AIzaSyA-sWfwZjTb6F1iihJuXW0wPpoKiueQ9W8';
+  const GEMINI_KEY = 'AIzaSyCfHR-86eo6fdi3-jBjwxPyO_Xsc1VZQ7A';
   const prompt = `You are a world-class fragrance expert. For the search "${raw}", return ONLY a JSON array (no markdown, no backticks, raw JSON only) of 1-4 matching fragrances. Each object must have exactly these keys:
 {
   "name": "exact perfume name",
@@ -1835,7 +1835,7 @@ async function getRecommendations() {
   resultsEl.style.display = 'block';
   cardsEl.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--muted);font-size:13px">✦ Asking AI for your perfect scents...</div>`;
   comboEl.innerHTML = '';
-  const GEMINI_KEY = 'AIzaSyA-sWfwZjTb6F1iihJuXW0wPpoKiueQ9W8';
+  const GEMINI_KEY = 'AIzaSyCfHR-86eo6fdi3-jBjwxPyO_Xsc1VZQ7A';
   const occasion = recSel.occasion || 'any occasion';
   const mood = recSel.mood || 'any mood';
   const notes = recSel.notes.length ? recSel.notes.join(', ') : 'any notes';
@@ -1918,7 +1918,7 @@ async function openSimilar(f) {
   document.getElementById('similar-title').textContent = `Similar to ${f.name}`;
   document.getElementById('similar-results').innerHTML = '<div style="color:var(--muted);font-size:13px">✦ Finding similar & inspired-by fragrances...</div>';
   document.getElementById('similar-modal').style.display = 'flex';
-  const GEMINI_KEY = 'AIzaSyA-sWfwZjTb6F1iihJuXW0wPpoKiueQ9W8';
+  const GEMINI_KEY = 'AIzaSyCfHR-86eo6fdi3-jBjwxPyO_Xsc1VZQ7A';
   const prompt = `You are a fragrance expert. For "${f.name}" by ${f.brand}, list 5 similar fragrances and 3 fragrances that are inspired by or smell similar to it (often more affordable alternatives). Return ONLY a JSON object (no markdown) with two arrays:
 {"similar":[{"name":"","brand":"","price":"$XX","why":"one sentence similarity reason"}],"inspiredBy":[{"name":"","brand":"","price":"$XX","why":"one sentence why it is inspired by or smells similar"}]}
 Return valid JSON only.`;
