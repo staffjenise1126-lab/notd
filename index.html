@@ -1071,7 +1071,7 @@ async function handleImportFile(input) {
       const mimeType = file.type;
       statusEl.textContent = '✦ Analyzing image with AI...';
       // Get available model
-      let modelName = 'gemini-1.5-flash-latest';
+      let modelName = 'gemini-2.0-flash';
       requestBody = {
         contents: [{
           parts: [
@@ -1084,7 +1084,7 @@ async function handleImportFile(input) {
       // Text file
       const text = await file.text();
       statusEl.textContent = '✦ Parsing fragrance list with AI...';
-      let modelName = 'gemini-1.5-flash-latest';
+      let modelName = 'gemini-2.0-flash';
       requestBody = {
         contents: [{
           parts: [{ text: `This is a fragrance list or document. Extract ALL fragrances mentioned. Return a JSON array (no markdown, raw JSON only) where each object has: {"name":"fragrance name","brand":"brand name","type":"EDP/EDT/Oil/Butter/Lotion/Mist/Unknown","notes":"notes if mentioned or empty","family":"scent family if known","inspiredBy":"designer inspiration if mentioned or empty"}. Document content:\n\n${text.slice(0,3000)}\n\nReturn valid JSON array only.` }]
@@ -1093,7 +1093,7 @@ async function handleImportFile(input) {
     }
 
     // Discover model
-    let modelName = 'gemini-1.5-flash-latest';
+    let modelName = 'gemini-2.0-flash';
     const resp = await fetch(PROXY_URL, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ model: modelName, prompt: prompt })
@@ -1702,7 +1702,7 @@ async function runGlobalSearch() {
 }
 If vague (e.g. "vanilla"), return 3-4 top fragrances matching that note. Return valid JSON array only, nothing else.`;
   try {
-  let modelName = 'gemini-1.5-flash-latest';
+  let modelName = 'gemini-2.0-flash';
     const resp = await fetch(PROXY_URL, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ model: modelName, prompt: prompt })
@@ -1843,7 +1843,7 @@ Return ONLY a JSON array (no markdown, no backticks) of exactly 6 objects with t
 {"name":"fragrance name","brand":"brand","type":"EDP/EDT/etc","family":"Floral/Oriental/etc","notes":"comma-separated key notes","why":"one sentence why this fits their criteria","layerTip":"one specific layering tip"}
 Return valid JSON array only.`;
   try {
-    let modelName = 'gemini-1.5-flash-latest';
+    let modelName = 'gemini-2.0-flash';
     const resp = await fetch(PROXY_URL, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ model: modelName, prompt: prompt })
@@ -1922,7 +1922,7 @@ async function openSimilar(f) {
 {"similar":[{"name":"","brand":"","price":"$XX","why":"one sentence similarity reason"}],"inspiredBy":[{"name":"","brand":"","price":"$XX","why":"one sentence why it is inspired by or smells similar"}]}
 Return valid JSON only.`;
   try {
-    let modelName = 'gemini-1.5-flash-latest';
+    let modelName = 'gemini-2.0-flash';
     const resp = await fetch(PROXY_URL, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ model: modelName, prompt: prompt })
